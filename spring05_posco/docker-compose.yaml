@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    restart: always
+  web:
+    image: tomcat:9.0.84
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/libs/:/usr/local/tomcat/webapps/
